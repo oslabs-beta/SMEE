@@ -9,6 +9,8 @@ _TODO_:
 
 ### How to use this repo
 
+To install dependencies
+
 ```sh
 yarn install
 ```
