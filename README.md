@@ -1,4 +1,5 @@
 # SMEE
+
 ## State-Management : Extremely Easy
 
 _TODO_:
@@ -10,4 +11,10 @@ _TODO_:
 
 ```sh
 yarn install
+```
+
+To start the sample site:
+
+```sh
+yarn site:start
 ```
