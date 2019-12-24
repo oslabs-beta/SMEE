@@ -32,7 +32,7 @@ yarn cra:start
 ### To add a new package to repo
 
 - Exported and Imported packages are a barebones example of the following.
-- Add a folder `touch packages/new-package`
+- Add a folder `mkdir packages/new-package`
 - Add a package.json file `touch packages/new-package/package.json`
 - In the package.json file add `"name": "@smee/new-package"`
 - In the package.json file add `"version":"1.0.0"`
