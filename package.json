@@ -1,0 +1,33 @@
+{
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "author": "Rodrigo Fuentes <rodrigofuentes@users.noreply.github.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^6.7.2",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-node": "^4.0.0",
+    "eslint-config-prettier": "^6.7.0",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-node": "^10.0.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-react": "^7.17.0",
+    "jest": "^24.9.0",
+    "jest-watch-yarn-workspaces": "^1.1.0",
+    "prettier": "^1.19.1"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "test": "jest --watch",
+    "site:start":"yarn workspace @smee/sample-site start",
+    "cra:start":"yarn workspace @smee/cra-site start"
+  },
+  "dependencies": {
+    "eslint-plugin-import": "^2.19.1"
+  },
+  "jest": {
+    "watchPlugins": ["jest-watch-yarn-workspaces"]
+  }
+}
