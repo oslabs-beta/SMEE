@@ -20,3 +20,9 @@ To start the sample site:
 ```sh
 yarn site:start
 ```
+
+To start the create-react-app site:
+
+```sh
+yarn cra:start
+```
