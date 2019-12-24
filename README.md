@@ -7,3 +7,7 @@ _TODO_:
 - Add shields.io
 
 ### How to use this repo
+
+```sh
+yarn install
+```
