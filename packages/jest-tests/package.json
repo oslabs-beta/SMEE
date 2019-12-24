@@ -1,0 +1,7 @@
+{
+  "name":"@smee/jest-tests",
+  "version":"1.0.0",
+  "dependencies": {
+    "@smee/exported":"1.0.0"
+  }
+}
