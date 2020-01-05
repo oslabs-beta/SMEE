@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import { useStore } from '@smee/smee/useStore';
 import { Store } from '@smee/smee/store';
@@ -32,6 +33,7 @@ function Container() {
 }
 
 function Card(props) {
+  // eslint-disable-next-line react/destructuring-assignment
   const num = useStore(`count${props.index}`, 0);
   return (
     <div>
