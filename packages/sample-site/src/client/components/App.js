@@ -1,16 +1,14 @@
 import React, { useState } from 'react';
-import math from '@smee/exported';
 import Button from './button';
 
 export default function App(props) {
-  const four = math.add(2, 2);
+  // const four = math.add(2, 2);
   // eslint-disable-next-line react/prop-types
   const { name } = props;
 
   // useState takes our initial state as a parameter
   const [count, setCount] = useState(0);
   const buttons = [];
-  const array = [];
 
   const handleCount = () => {
     setCount(count + 1);
