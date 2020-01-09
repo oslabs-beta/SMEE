@@ -1,61 +1,60 @@
-/* eslint-disable no-param-reassign */
-function createStore() {
-  // Create our store object.
+// The store generator function, returns anonymous object through closure
+function generateStore() {
+  // generate our store object.
   const globalStore = {};
 
   // This get just grabs the data we hold in the piece of state currently being targeted and nothing else.
   const getter = state => ({
-    get: () => state.data,
+    get: () => state.data
   });
 
-  // This sets initial state data OR modifies our state data and updates state listeners.
+  // This sets initial state data or modifies our state data and updates state listeners.
   const setter = state => ({
     set: newData => {
-      if (state.data !== newData) {
-        state.data = newData;
-        state.listeners.forEach(x => x(newData));
-      }
-    },
+      state.data = newData;
+      state.listeners.forEach(x => x(newData));
+    }
   });
 
-  // This will subscribe a component to the target piece of state, and return a function that will unsubscribe when invoked.
+  // This will subscribe a component to the target piece of state, and return a function that will unsubscribe when invoked (useEffect).
   const subscriber = state => ({
     subscribe: listener => {
       state.listeners.push(listener);
-      return () => {
-        state.listeners = state.listeners.filter(x => x !== listener);
-      };
-    },
+      return () =>
+        (state.listeners = state.listeners.filter(x => x !== listener));
+    }
   });
 
-  // Closure. We return an anonymous object that can set a piece of state or get a piece of state. BONUS: if nothing is passed into getState it returns a copy of the entire state, useful for debugging.
+  // We return an anonymous object that can set a piece of state or get a piece of state.
   return {
     setState: (name, data) => {
-      if (typeof name !== 'string')
-        throw new Error('State name must be a string');
+      // Error handling
+      if (typeof name !== "string")
+        throw new Error("State name must be *type: 'String'*");
 
-      // Using functional composition here-- This way we keep references to functions, allow our code to be modified later if needed with ease, and removes the extra text on each build. Also, allows for minification.
       globalStore[name] = (() => {
+        // Define our default empty state
         const state = { data: null, listeners: [] };
+        // Using functional composition here-- This way keeps references to functions, allows code to be modified later if needed, and removes the extra syntax text on each build.
         return Object.assign(
           state,
           getter(state),
           setter(state),
-          subscriber(state),
+          subscriber(state)
         );
       })();
+      // Run a set on the new state to write data to object
       globalStore[name].set(data);
     },
-    getState: (name = null) => {
-      if (name === null) return { ...globalStore };
+    getState: name => {
+      // Error handling
+      if (typeof name !== "string")
+        throw new Error("State name must be *type: 'String'*");
 
-      if (typeof name !== 'string')
-        throw new Error('State name must be a string');
-
-      if (!globalStore[name]) return false;
+      // Return the store reference
       return globalStore[name];
-    },
+    }
   };
 }
-// eslint-disable-next-line import/prefer-default-export
-export const Store = createStore();
+// Export the Store object wrapped in closure for Smee functionality
+export const Store = generateStore();
