@@ -6,7 +6,7 @@ export function useStore(stateName = null) {
   if (stateName === null)
     throw new Error("Parameter [state_name] of *type: 'String'* required");
   if (typeof stateName !== 'string')
-    throw new Error("State name must be *type: 'String'*");
+    throw new TypeError("State name must be *type: 'String'*");
 
   // Grab the piece of state in question from store
   const observable = Store.getState(stateName);

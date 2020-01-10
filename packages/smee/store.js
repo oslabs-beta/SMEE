@@ -28,7 +28,7 @@ function generateStore() {
   return {
     setState: (name, data) => {
       if (typeof name !== 'string')
-        throw new Error("State name must be *type: 'String'*");
+        throw new TypeError("State name must be *type: 'String'*");
 
       globalStore[name] = (() => {
         const state = { data: null, listeners: [] };
@@ -44,7 +44,7 @@ function generateStore() {
     },
     getState: name => {
       if (typeof name !== 'string')
-        throw new Error("State name must be *type: 'String'*");
+        throw new TypeError("State name must be *type: 'String'*");
 
       // Return the store reference, not a copy
       return globalStore[name];

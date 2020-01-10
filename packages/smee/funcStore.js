@@ -15,7 +15,7 @@ export const setStore = (stateName = null, callback) => {
   if (stateName === null)
     throw new Error("Parameter [state_name] of *type: 'String'* required");
   if (typeof stateName !== 'string')
-    throw new Error("State name must be *type: 'String'*");
+    throw new TypeError("State name must be *type: 'String'*");
   if (!callback || typeof callback !== 'function')
     throw new Error('Parameter [callback_func] of *type: |Function|* required');
 
