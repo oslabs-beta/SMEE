@@ -21,13 +21,15 @@
   "scripts": {
     "lint": "eslint .",
     "test": "jest --watch",
-    "site:start":"yarn workspace @smee/sample-site start",
-    "cra:start":"yarn workspace @smee/cra-site start"
+    "site:start": "yarn workspace @smee/sample-site start",
+    "cra:start": "yarn workspace @smee/cra-site start"
   },
   "dependencies": {
     "eslint-plugin-import": "^2.19.1"
   },
   "jest": {
-    "watchPlugins": ["jest-watch-yarn-workspaces"]
+    "watchPlugins": [
+      "jest-watch-yarn-workspaces"
+    ]
   }
 }
