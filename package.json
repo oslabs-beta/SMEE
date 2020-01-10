@@ -25,7 +25,8 @@
     "cra:start": "yarn workspace @smee/cra-site start"
   },
   "dependencies": {
-    "eslint-plugin-import": "^2.19.1"
+    "eslint-plugin-import": "^2.19.1",
+    "react": "^16.12.0"
   },
   "jest": {
     "watchPlugins": [
