@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import Button from './button';
 
 export default function App(props) {
-  // const four = math.add(2, 2);
   // eslint-disable-next-line react/prop-types
   const { name } = props;
 
@@ -14,13 +13,10 @@ export default function App(props) {
     setCount(count + 1);
   };
 
-  for (let i = 0; i <= count; i++) {
-    buttons.push(<Button click={handleCount} count={count} key={i} />);
+  for (let i = 0; i <= count; i += 1) {
+    buttons.push(<Button click={handleCount} key={i} />);
   }
 
-  //  for(let i= 0; i < {count}; i++){
-  //    return(<)
-  //  }
   return (
     <div>
       <h1>Hello I&rsquo;m {name}.</h1>
@@ -34,9 +30,6 @@ export default function App(props) {
         <h3>{count}</h3>
         {buttons}
       </div>
-      {/* <button onClick={() => setCount(count + 1)} type="button">
-        {count}
-      </button> */}
     </div>
   );
 }

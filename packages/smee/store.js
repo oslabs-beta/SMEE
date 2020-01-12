@@ -13,7 +13,7 @@ function createStore() {
     set: newData => {
       if (state.data !== newData) {
         state.data = newData;
-        state.listeners.forEach(x => x(newData));
+        state.listeners.forEach(observer => observer(newData));
       }
     },
   });
@@ -23,7 +23,9 @@ function createStore() {
     subscribe: listener => {
       state.listeners.push(listener);
       return () => {
-        state.listeners = state.listeners.filter(x => x !== listener);
+        state.listeners = state.listeners.filter(
+          observer => observer !== listener,
+        );
       };
     },
   });
@@ -46,6 +48,7 @@ function createStore() {
       })();
       globalStore[name].set(data);
     },
+
     getState: (name = null) => {
       if (name === null) return { ...globalStore };
 

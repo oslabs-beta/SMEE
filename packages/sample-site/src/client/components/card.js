@@ -2,7 +2,6 @@
 import React from 'react';
 import { useStore } from '@smee/smee/useStore';
 import { Store } from '@smee/smee/store';
-// import abc from '@smee/smee/test'
 
 function changeState(action) {
   const state = Store.getState(action.stateName);
@@ -17,15 +16,15 @@ function changeState(action) {
 
 function TotalCount() {
   const total = useStore('totalCount', 0);
-  return <p>Total: {total}</p>;
+  return <h1>Total: {total}</h1>;
 }
 
 function Container() {
   const arr = Array.from({ length: 6 }, (_, i) => {
-    return <Card index={i} key={i} className="" />;
+    return <Card index={i} key={i} />;
   });
   return (
-    <div>
+    <div className="card-container">
       <TotalCount />
       {arr}
     </div>
@@ -36,7 +35,7 @@ function Card(props) {
   // eslint-disable-next-line react/destructuring-assignment
   const num = useStore(`count${props.index}`, 0);
   return (
-    <div>
+    <div className="card">
       <h3>Counter: {num}</h3>
       <button
         type="button"
