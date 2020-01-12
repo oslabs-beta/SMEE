@@ -31,11 +31,11 @@ yarn cra:start
 
 ### To add a new package to repo
 
-- Exported and Imported packages are a barebones example of the following.
+- If the new package is named: `new-package`
 - Add a folder `mkdir packages/new-package`
 - Add a package.json file `touch packages/new-package/package.json`
 - In the package.json file add `"name": "@smee/new-package"`
 - In the package.json file add `"version":"1.0.0"`
-- In a package that you want to use the new one add a dependency `"@smee/new-package": "1.0.0"`
-- Import in the file you want to use the package `import newpackage from '@smee/new-package`
+- To use the package inside another package add the dependency `"@smee/new-package": "1.0.0"`
+- Import in the file you want to use from the new package `import newpackage from '@smee/new-package`
 - Profit.
