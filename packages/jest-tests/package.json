@@ -2,6 +2,6 @@
   "name":"@smee/jest-tests",
   "version":"1.0.0",
   "dependencies": {
-    "@smee/smee":"1.0.0"
+    "@smee/core":"1.0.0"
   }
 }

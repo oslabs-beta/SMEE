@@ -11,7 +11,7 @@
   "dependencies": {
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "@smee/smee": "1.0.0"
+    "@smee/core": "1.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.7.5",
