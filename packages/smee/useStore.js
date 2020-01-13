@@ -14,7 +14,7 @@ export function useStore(stateName = null, value = null) {
   // If value is found and a value is passed in, error handle
   if (observable && value !== null)
     throw new Error(
-      'Attepted to generate new state-- state already exists in store',
+      `Attepted to generate new state: ${stateName} but state already exists in store`,
     );
   // If no value is found, make new state and update the observer variable
   if (!observable) {
