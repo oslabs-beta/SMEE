@@ -21,12 +21,7 @@
   "scripts": {
     "lint": "eslint .",
     "test": "jest --watch",
-<<<<<<< HEAD
     "site:start":"yarn workspace @smee/sample-site start"
-=======
-    "site:start": "yarn workspace @smee/sample-site start",
-    "cra:start": "yarn workspace @smee/cra-site start"
->>>>>>> da4d3788c6f5113e1f6a4a884c205bae85ec6919
   },
   "dependencies": {
     "eslint-plugin-import": "^2.19.1",
