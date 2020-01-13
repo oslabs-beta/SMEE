@@ -1,19 +1,24 @@
-// We import the react hooks we will use, and the Store we made in store.js.
 import { useState, useEffect } from 'react';
 import { Store } from './store';
 
-// The useStore hook takes in a name for the state and data the state holds.
-export default function useStore(stateName = null) {
-  // Error handling
+// The useStore hook
+export function useStore(stateName = null, value = null) {
   if (stateName === null)
     throw new Error("Parameter [state_name] of *type: 'String'* required");
   if (typeof stateName !== 'string')
-    throw new Error("State name must be *type: 'String'*");
+    throw new TypeError("State name must be *type: 'String'*");
 
   // Grab the piece of state in question from store
-  const observable = Store.getState(stateName);
-  // Error handle in case it isn't found.
-  if (!observable) throw new Error('State requested not found in store');
+  let observable = Store.getState(stateName);
+  // If no value is found, make new state and update the observer variable
+  if (!observable) {
+    if (value === null)
+      throw new Error(
+        `Attempted to make new state: ${stateName}, no value for ${stateName} in parameters`,
+      );
+    Store.setState(stateName, value);
+    observable = Store.getState(stateName);
+  }
 
   // Run a useState hook to grab the data of state and a setter for it
   const [data, setData] = useState(observable.get());
@@ -21,6 +26,6 @@ export default function useStore(stateName = null) {
   // Run a useEffect hook to link our Store to this component, and re-render on change
   useEffect(() => observable.subscribe(setData), [observable]);
 
-  // Return the data that updates on change, anywhere.
+  // Return the data that updates on the state objects' change
   return data;
 }
