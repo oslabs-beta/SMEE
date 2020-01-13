@@ -1,12 +1,18 @@
 /* eslint-disable no-undef */
-const math = require('@smee/exported');
+// import { useStore } from '@smee/core/useStore';
+// import { createStore, setStore } from '@smee/core/funcStore';
 
-describe('Math add tests', () => {
-  const sum = math.add(3, 4);
-  it('Add up to 7', () => {
-    expect(sum).toBe(7);
-  });
-  it('The type should be a number', () => {
-    expect(typeof math.add(3, 4)).toBe('number');
+import { str, str2 } from '@smee/core/test';
+
+describe('SMEE: Build a store', () => {
+  // const theStore = createStore({ counter: 0 });
+  // console.log(useStore('counter'));
+  // it('Should crate a store', () => {
+  //   expect(useStore('counter')).toBe(0);
+  // });
+  const astring = str;
+  const bstring = str2;
+  it('testing stuff', () => {
+    expect(str).toBe('Test my func');
   });
 });

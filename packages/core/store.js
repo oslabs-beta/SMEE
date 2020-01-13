@@ -21,8 +21,9 @@ function generateStore() {
   const subscriber = state => ({
     subscribe: listener => {
       state.listeners.push(listener);
-      return () =>
-        (state.listeners = state.listeners.filter(x => x !== listener));
+      return () => {
+        state.listeners = state.listeners.filter(x => x !== listener);
+      };
     },
   });
 

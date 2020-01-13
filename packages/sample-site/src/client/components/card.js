@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import { useStore } from '@smee/smee/useStore';
-import { Store } from '@smee/smee/store';
+import { useStore } from '@smee/core/useStore';
+import { Store } from '@smee/core/store';
 
 function changeState(action) {
   const state = Store.getState(action.stateName);
