@@ -10,6 +10,11 @@ export function useStore(stateName = null, value = null) {
 
   // Grab the piece of state in question from store
   let observable = Store.getState(stateName);
+
+  if (observable && value !== null)
+    throw new Error(
+      'Attepted to generate new state-- state already exists in store',
+    );
   // If no value is found, make new state and update the observer variable
   if (!observable) {
     if (value === null)
