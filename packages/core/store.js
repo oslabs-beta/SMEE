@@ -2,7 +2,6 @@
 /* eslint-disable import/prefer-default-export */
 // The store generator function, returns anonymous object through closure
 function generateStore() {
-  // generate our store object.
   const globalStore = {};
 
   // This get just grabs the data we hold in the piece of state currently being targeted and nothing else.
@@ -22,21 +21,18 @@ function generateStore() {
   const subscriber = state => ({
     subscribe: listener => {
       state.listeners.push(listener);
-      return () => {
-        state.listeners = state.listeners.filter(x => x !== listener);
-      };
+      return () =>
+        (state.listeners = state.listeners.filter(x => x !== listener));
     },
   });
 
   // We return an anonymous object that can set a piece of state or get a piece of state.
   return {
     setState: (name, data) => {
-      // Error handling
       if (typeof name !== 'string')
-        throw new Error("State name must be *type: 'String'*");
+        throw new TypeError("State name must be *type: 'String'*");
 
       globalStore[name] = (() => {
-        // Define our default empty state
         const state = { data: null, listeners: [] };
         // Using functional composition here-- This way keeps references to functions, allows code to be modified later if needed, and removes the extra syntax text on each build.
         return Object.assign(
@@ -46,15 +42,13 @@ function generateStore() {
           subscriber(state),
         );
       })();
-      // Run a set on the new state to write data to object
       globalStore[name].set(data);
     },
     getState: name => {
-      // Error handling
       if (typeof name !== 'string')
-        throw new Error("State name must be *type: 'String'*");
+        throw new TypeError("State name must be *type: 'String'*");
 
-      // Return the store reference
+      // Return the store reference, not a copy
       return globalStore[name];
     },
   };
