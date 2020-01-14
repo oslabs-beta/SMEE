@@ -1,8 +1,11 @@
 import { useState, useEffect } from 'react';
 import { Store } from './store';
+// const { useState, useEffect } = require('react');
+// const { Store } = require('./store');
 
 // The useStore hook
-export const useStore = (stateName = null, value = null) => {
+// eslint-disable-next-line import/prefer-default-export
+const useStore = (stateName = null, value = null) => {
   if (stateName === null)
     throw new Error("Parameter [state_name] of *type: 'String'* required");
   if (typeof stateName !== 'string')
@@ -33,4 +36,8 @@ export const useStore = (stateName = null, value = null) => {
 
   // Return the data that updates on the state objects' change
   return data;
+};
+
+module.exports = {
+  useStore,
 };

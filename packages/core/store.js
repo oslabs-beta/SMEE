@@ -55,4 +55,5 @@ function generateStore() {
   };
 }
 // Export the Store object wrapped in closure for Smee functionality
-export const Store = generateStore();
+const Store = generateStore();
+module.exports = { Store };

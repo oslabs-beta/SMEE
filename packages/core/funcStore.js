@@ -1,6 +1,6 @@
-import { Store } from './store';
+const { Store } = require('./store');
 
-export const createStore = store => {
+const createStore = store => {
   if (!store || typeof store !== 'object')
     throw new Error('Parameter [store] of *type: {Obect}* required');
 
@@ -12,7 +12,7 @@ export const createStore = store => {
   keys.forEach(key => Store.setState(key, store[key]));
 };
 
-export const setStore = (stateName = null, callback) => {
+const setStore = (stateName = null, callback) => {
   if (stateName === null)
     throw new Error("Parameter [state_name] of *type: 'String'* required");
   if (typeof stateName !== 'string')
@@ -28,4 +28,9 @@ export const setStore = (stateName = null, callback) => {
 
   // Run the passed in callback on it, adding the requested data as the callbacks' parameter.
   state.set(callback(data));
+};
+
+module.exports = {
+  createStore,
+  setStore,
 };

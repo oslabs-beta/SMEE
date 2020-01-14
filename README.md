@@ -38,4 +38,5 @@ yarn cra:start
 - In the package.json file add `"version":"1.0.0"`
 - To use the package inside another package add the dependency `"@smee/new-package": "1.0.0"`
 - Import in the file you want to use from the new package `import newpackage from '@smee/new-package`
+- If there are any issues delete `node_modules` and the `lock` files in the repo.
 - Profit.
