@@ -1,37 +1,77 @@
-**_HOW TO USE SMEE v.1_**
+# SMEE 
+## _State Management: Extra Easy_
 
-**What is SMEE?**
-SMEE stands for State-management Made Extra Easy; meaning the amount of work you as a user of our library has to do is lessened greatly in comparison to other State-management options.\*
+**_HOW TO USE SMEE v1.0_**
+​
 
-**Why use SMEE?**
-We offer a simple, easy to use React hook to access, modify, and display your apps state in any component, on any level. Globably.
+### **What is SMEE?**
 
-**Wow! Color me impressed. How did you manage to--**
-Don't ask how we did it.
+SMEE stands for State-management: Extra Easy; meaning the amount of work you as a user of our library has to do is reduced greatly in comparison to other state-management options.
+​
 
-**Okay... Anyway... Why Hooks?**
-Great question! To answer that, I'll need to give you a little refresher on what Hooks are. Hooks are a bleeding-edge React feature allowing you to 'hook' into any component using the hooks they provide, removing the need to prop drill and allowing functional components to shine. They both simplify the amount of code needed to write, and better improve readability as a user entering the codebase.
-So, with that in mind, we chose to use hooks due to the ease of writing for a user; _you_, and the removal of abstractions. With hooks like useState that, you guessed it, use the state, you are able to build custom hooks that do exactly what it says on the tin.
+### **Why use SMEE?**
 
-**Okay, okay... So how do I get started?**
-About time, right? Okay... First, download our package. Install it. Got that? Good. Next up, write out some functional components you may use. Go on... You know how to do that, right? Here... Use this one.
+We offer a simple, easy to use React hook to access, modify, and display your apps state in any component, on any level, globably.
+​
 
-(simple adding counter)
+### **Why Hooks?**
 
-Now, in place of your 'useState' hook, use our 'useStore'! But hold on... It doesn't work EXACTLY like the 'useState' hook... The syntax is a little different. (THIS IS THE CURRENT ITERATION, EVERYTHING IS SUBJECT TO CHANGE) The 'useStore' hook allows for two inputs; the name of the state as a string, and the value of that state. If you include the value, it will assume you are attempting to alter the value, or add a new value if the input string does not exist as a piece of state in the global store. So, let's say we want to add a counter state that our counting component will alter. We would type the following:
+Hooks are a bleeding-edge React feature allowing you to 'hook' into any component using the functions they provide, removing the need to prop drill down and allowing functional components to shine. They both simplify the amount of code needed to write and improve overall readability as a user entering the codebase.
+We chose to use hooks due to the ease of writing for a user; _you_, and the removal of abstractions. With hooks like useState you are able to build custom hooks that do exactly what it says on the tin.
+​
 
-const count = useStore("counter", 0);
+### **How to Get Started**
 
-And bam! Just like that, a global piece of state is added to the global store. Wanna use it? Cool! the useStore provided us with the value that was either created or pulled out from the global store.
+First, download and install our package.
+`npm install smee`
+​
+Now let's make a basic component that needs state. Say, a simple counter.
+​
+```javascript
+const Counter = () => {
+  return <h1>Counter</h1>;
+};
+```
+​
+Now, in place of your `useState` hook, use our `useStore` hook. But hold on... It doesn't work EXACTLY like the `useState` hook... The syntax is a little different. The `useStore` hook allows for two inputs; the name of the state as a string, and the value of that state. If you include the value, it will assume you are attempting to alter the value, or add a new value if the input string does not exist as a piece of state in the global store. So, let's say we want to add a counter state that our counting component will alter. We would type the following:
+​
+```js
+const Counter = () => {
+  const count = useStore('count', 0);
+  return <h1>Counter: {count}</h1>;
+};
+```
+​
+Or, if we have the state defined elsewhere, we can use that same hook to grab it from our store.
+​
+```js
+const Counter = () => {
+  const count = useStore('count', 0);
+  return <h1>Counter: {count}</h1>;
+};
+```
+​
+Just like that, a global piece of state is added to the global store. Using it is just as simple; the useStore provided us with the value that was either created or pulled out from the global store.
+​
 
-Now if you modify that value, it'll update the global store and re-render!\*\* Where you do that is up to you. Wanna do it right in your component? Go for it! Wanna do it on a separate page? Go for it! Make a reducer page that will handle all the logic, pass it these values and alter them there. It's that easy!
-
-**Oh my god! You guys are really changing the game... You could say that this really is The Future of State-management, Today!**
-Yeah. We know. Subsequently, if you happen to have work... We are all out of jobs.
-
-**Oh! Uh... Yeah.. Thanks for making this!**
-You're welcome.
-
-\*other libraries may be able to accomplish something similar, however differently
-
-\*\*yeah I got no clue if this shit will actually work
+Now we need to modify that value. Let's make a button that updates the counter using our setStore function. setStore takes a string representing the requested state, and a callback that determines what is done to that state.
+​
+```javascript
+const Counter = () => {
+  const count = useStore('count', 0);
+  return <h1>Counter: {count}</h1>;
+};
+const CounterUpdate = () => {
+  return <button onClick={() => setStore('count', () => count + 1)} />;
+};
+```
+​
+Where you do this is up to you. Wanna do it right in your component? Go for it! Wanna do it on a separate page? Works just as well. Make a reducer page that will handle all the logic, pass it these values and alter them there. There is even a createStore function for generating initial state, making other devs working on your project have less headaches. Our createStore takes in an object containing all initial data for your project. Need to make multiple initial states? No problem. Use this function as often as you want, all data is pushed into the same global store.
+​
+```javascript
+createStore({
+  count: 0,
+});
+```
+​
+And there you have it! Global state management has never been so easy.
