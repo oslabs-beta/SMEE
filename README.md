@@ -1,4 +1,5 @@
 # **SMEE**
+![SMEE Logo](https://i.imgur.com/2aEuLug.png)
 ## _State Management: Extra Easy_
 
 **_HOW TO USE SMEE v1.0_**
