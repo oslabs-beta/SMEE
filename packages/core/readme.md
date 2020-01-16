@@ -27,7 +27,7 @@ Hooks are a bleeding-edge [React](https://reactjs.org/) feature allowing you to 
 First, download and install the package.
 
 ```sh
- npm install smee 
+ npm install react-smee 
  ```
 
 Now let's make a basic component that needs state. Say, a simple counter.
