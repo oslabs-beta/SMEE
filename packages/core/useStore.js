@@ -30,11 +30,6 @@ const useStore = (stateName = null, value = null) => {
 
   // Grab the piece of state in question from store
   let observable = Store.getState(stateName);
-  // If observable is found and a value is passed in, error handle
-  if (observable && value !== null)
-    throw new Error(
-      `Attepted to generate new state: ${stateName} but requested state already exists in store`,
-    );
   // If no value is found, make new state and update the observer variable
   if (!observable) {
     if (value === null)
