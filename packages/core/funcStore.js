@@ -1,17 +1,38 @@
+/**
+ * @summary custom hook to be imported into your file
+ *
+ * @description creates the store to be used in your application and returns a store object 
+ *  createStore 
+ *  setStore
+ * 
+ * @file  ./packages/core/funcStore.js 
+ * 
+ * @authors Riley Burns, Rodrigo Fuentes, Georgina Carr, Joseph Corrado, Le Bui
+ */
+
+
 const { Store } = require('./store');
 
+/**
+ * createStore takes an object as an argument and holds the the name of the store and its data globally 
+ * @param {*} store 
+ * 
+ */
 const createStore = store => {
   if (!store || typeof store !== 'object')
     throw new Error('Parameter [store] of *type: {Obect}* required');
 
+  // Grab keys off the object into an array 
   const keys = Object.keys(store);
-  // for (let key of keys) {
-  //   // Run a setState on each key value pair in the argument object
-  //   Store.setState(key, store[key]);
-  // }
+  // Iterate and run a setState on each
   keys.forEach(key => Store.setState(key, store[key]));
 };
 
+/**
+ * setStore updates the requested state in the store via a callback function
+ * @param {*} stateName 
+ * @param {*} callback 
+ */
 const setStore = (stateName = null, callback) => {
   if (stateName === null)
     throw new Error("Parameter [state_name] of *type: 'String'* required");

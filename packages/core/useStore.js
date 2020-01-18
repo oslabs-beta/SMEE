@@ -1,7 +1,24 @@
-import { useState, useEffect } from 'react';
-import { Store } from './store';
-// const { useState, useEffect } = require('react');
-// const { Store } = require('./store');
+/**
+ * @summary custom hook to get data from store 
+ *
+ * @description 
+ * useStore
+ * useState
+ * useEffect
+ *
+ * @file   ./packages/core/useStore.js 
+ * 
+ * @authors _____
+ */
+
+ /**
+ * useStore takes the querying piece of state, its value and a function that changes the state as arguments and returns the state object's data  
+ * @param {*} stateName 
+ * 
+ */
+const { useState, useEffect } = require('react');
+const { Store } = require('./store');
+
 
 // The useStore hook
 // eslint-disable-next-line import/prefer-default-export
@@ -25,7 +42,7 @@ const useStore = (stateName = null, value = null) => {
         `Attempted to make new state: ${stateName}, no value for ${stateName} in parameters`,
       );
     Store.setState(stateName, value);
-    observable = Store.getState(stateName);
+    observable = Store.getState(stateName); 
   }
 
   // Run a useState hook to grab the data of state and a setter for it

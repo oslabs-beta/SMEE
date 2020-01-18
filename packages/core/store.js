@@ -1,6 +1,20 @@
+/**
+ * @summary custom hook to be imported into your file
+ *
+ * @description creates the store to be used in your application and returns a store object 
+ *  generateStore 
+ * 
+ * @file   ./packages/core/store.js 
+ * 
+ * @authors _____
+
 /* eslint-disable no-param-reassign */
 /* eslint-disable import/prefer-default-export */
 // The store generator function, returns anonymous object through closure
+/**
+ * generateStore provides access to state, sets and updates the application state with the getter setter and subscriber method
+ * 
+ */
 function generateStore() {
   const globalStore = {};
 
