@@ -32,7 +32,7 @@
     "react-dom": "^16.12.0",
     "react-test-renderer": "^16.12.0",
     "smee": "^0.2.0",
-    "yarn": "^1.21.1"
+    "yarn": "^1.22.0"
   },
   "jest": {
     "watchPlugins": [
